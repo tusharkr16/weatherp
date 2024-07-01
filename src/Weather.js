@@ -43,7 +43,7 @@ const Weather = () => {
             <h1>Weather App</h1>
             <input type="text" value={city} onChange={handleCityChange} placeholder="Enter city name" />
             <button onClick={handleSearch}>Search</button>
-            {loading && <p>Loading data…</p>}
+            {loading && <p>Loading data...</p>}
             {weatherData && (
                 <div className="weather-cards">
                     <div className="weather-card">
@@ -60,6 +60,7 @@ const Weather = () => {
                     </div>
                 </div>
             )}
+            {error && <p>{error}</p>}
         </div>
     );
 }
