@@ -14,13 +14,15 @@ const Weather = () => {
         setLoading(true);
         setError('');
         setWeatherData(null);
+        console.log('Fetching weather data for:', city);  // Debug log
         try {
-            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=79d64db3016f40c3bfe181640240107&q=${city}`);
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch weather data');
             }
             const data = await response.json();
             setWeatherData(data);
+            console.log('Weather data received:', data);  // Debug log
         } catch (error) {
             setError('Failed to fetch weather data');
         } finally {
