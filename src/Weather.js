@@ -15,18 +15,20 @@ const Weather = () => {
         setError('');
         setWeatherData(null);
         try {
-            setLoading(true);
+            // Simulate a delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
             const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=79d64db3016f40c3bfe181640240107&q=${city}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch weather data');
             }
             const data = await response.json();
             setWeatherData(data);
-            setLoading(false)
         } catch (error) {
             setError('Failed to fetch weather data');
             window.alert(error);
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -62,4 +64,4 @@ const Weather = () => {
     );
 }
 
-export default Weather
+export default Weather;
